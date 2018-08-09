@@ -17,6 +17,10 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
+  // listen on the chat message event from the client
+  socket.on('chat message', function(msg) {
+    console.log('message: ' + msg);
+  });
 });
 
 // make http server to listen on port 3000

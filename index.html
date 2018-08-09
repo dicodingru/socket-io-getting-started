@@ -61,11 +61,21 @@
 
   <!-- Load socket.io-client and expose a io global -->
   <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
-    // connect without specifying any URL
-    // cause by default it tries to connect
-    // to the host that serves the page
-    var socket = io();
+    $(function () {
+      // connect without specifying any URL
+      // cause by default it tries to connect
+      // to the host that serves the page
+      var socket = io();
+      $('form').submit(function () {
+        // emit chat message event to the server
+        // when a user send a message
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+    });
   </script>
 </body>
 
