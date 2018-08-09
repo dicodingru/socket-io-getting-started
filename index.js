@@ -5,7 +5,7 @@ var http = require('http').Server(app);
 
 // define a route to get called when home page is visited
 app.get('/', function(req, res) {
-  res.send('<h1>Hello world</h1>');
+  res.sendFile(__dirname + '/index.html');
 });
 
 // make http server to listen on port 3000
