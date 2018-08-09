@@ -17,9 +17,18 @@ io.on('connection', function(socket) {
   socket.on('disconnect', function() {
     console.log('user disconnected');
   });
+});
+
+io.on('connection', function(socket) {
   // listen on the chat message event from the client
   socket.on('chat message', function(msg) {
     console.log('message: ' + msg);
+
+    // send message to all socket clients
+    io.emit('chat message', msg);
+
+    // use this if you need to send msg to everyone except for this socket
+    // socket.broadcast.emit('chat message', msg);
   });
 });
 
